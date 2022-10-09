@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/d554gg62mubywhtv?svg=true)](https://ci.appveyor.com/project/Irytsch/aqa-hw2-1-selenium1)
