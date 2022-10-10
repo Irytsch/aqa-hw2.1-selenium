@@ -1,5 +1,6 @@
 package ru.netology;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,20 +16,23 @@ class CallbackTest {
     WebDriver driver;
 
     @BeforeAll
-    static void setUpAll() {
-// убедитесь, что файл chromedriver.exe расположен именно в каталоге C:\tmp
-        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
-
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
     }
+
+    //static void setUpAll() {
+// убедитесь, что файл chromedriver.exe расположен именно в каталоге C:\tmp
+        //System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
+    //}
 
     @BeforeEach
     void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
 
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--headless");
         driver = new ChromeDriver(options);
     }
 
@@ -39,7 +43,7 @@ class CallbackTest {
     }
 
     @Test
-    public void shouldSubmitRequest()
+    void shouldSubmitRequest()
             throws InterruptedException {
 
         driver.get("http://localhost:9999/");
