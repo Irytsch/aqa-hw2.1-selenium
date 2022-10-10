@@ -17,13 +17,15 @@ class CallbackTest {
     @BeforeAll
     static void setUpAll() {
 // убедитесь, что файл chromedriver.exe расположен именно в каталоге C:\tmp
-        System.setProperty("webdriver.chrome.driver", "C:\\tmp\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
 
     }
 
     @BeforeEach
     void setUp() {
         ChromeOptions options = new ChromeOptions();
+        options.setHeadless(true);
+
 //        options.addArguments("--disable-dev-shm-usage");
 //        options.addArguments("--no-sandbox");
 //        options.addArguments("--headless");
@@ -37,7 +39,7 @@ class CallbackTest {
     }
 
     @Test
-    void shouldSubmitRequest()
+    public void shouldSubmitRequest()
             throws InterruptedException {
 
         driver.get("http://localhost:9999/");
