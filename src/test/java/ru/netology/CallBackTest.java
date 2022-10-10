@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CallbackTest {
-    protected WebDriver driver;
+    WebDriver driver;
 
     @BeforeAll
     static void setUpAll() {
@@ -24,9 +24,9 @@ class CallbackTest {
     @BeforeEach
     void setUp() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--headless");
         driver = new ChromeDriver(options);
     }
 
