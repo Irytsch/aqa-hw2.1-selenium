@@ -12,20 +12,21 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CallbackTest {
-    private WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeAll
     static void setUpAll() {
 // убедитесь, что файл chromedriver.exe расположен именно в каталоге C:\tmp
         System.setProperty("webdriver.chrome.driver", "C:\\tmp\\chromedriver.exe");
+
     }
 
     @BeforeEach
     void setUp() {
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
     }
 
@@ -36,7 +37,8 @@ class CallbackTest {
     }
 
     @Test
-    void shouldSubmitRequest() {
+    void shouldSubmitRequest()
+            throws InterruptedException {
 
         driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Петров Николай");
