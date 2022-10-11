@@ -17,23 +17,17 @@ class CallbackTest {
 
     @BeforeAll
     static void setupClass() {
+
         WebDriverManager.chromedriver().setup();
     }
-
-    //static void setUpAll() {
-// убедитесь, что файл chromedriver.exe расположен именно в каталоге C:\tmp
-        //System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
-    //}
 
     @BeforeEach
     void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.setHeadless(true);
 
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999/");
     }
 
     @AfterEach
@@ -43,10 +37,8 @@ class CallbackTest {
     }
 
     @Test
-    void shouldSubmitRequest()
-            throws InterruptedException {
+    void shouldSubmitRequest() {
 
-        driver.get("http://localhost:9999/");
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Петров Николай");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79161114444");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
